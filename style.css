@@ -81,3 +81,160 @@ body.fixed {
     padding: 10px;
     margin-top: 180px;
   }
+  .box {
+    max-width: 600px;
+    width: 100%;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  .box p {
+    color: var(--Dark-gray);
+  }
+  .box hr {
+    border: solid 1px var(--Dark-gray);
+  }
+  .one {
+    position: relative;
+  }
+  .craft {
+    margin-bottom: 20px;
+  }
+  .craft img {
+    position: absolute;
+    top: -30px;
+    transform: translateX(-50%);
+  }
+  .direction {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  .direction button {
+    height: 40px;
+    border-radius: 30px;
+    border: transparent;
+    color: white;
+  }
+  .top {
+    background-color: var(--Moderate-cyan);
+    padding: 10px;
+    transition: 0.5s;
+  }
+  .top:hover {
+    background-color: var(--Dark-cyan);
+    cursor: pointer;
+  }
+  .bottom {
+    background-color: rgb(166, 165, 165);
+    margin-left: 10px;
+    transition: 0.6s;
+  }
+  .changed {
+    background-color: var(--Dark-cyan);
+    padding: 10px;
+  }
+  .bottom:hover {
+    color: var(--Dark-cyan);
+    font-weight: bold;
+    border: solid 0.5 var(--Dark-cyan);
+  }
+  .bottom span {
+    margin-right: 10px;
+  }
+  button img {
+    margin-right: 5px;
+    vertical-align: middle;
+    width: auto;
+    height: 100%;
+  }
+  button img:hover {
+    background-attachment: var(--Dark-cyan);
+  }
+  
+  .two {
+    display: flex;
+    flex-direction: column;
+  }
+  .update {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-bottom: 20px;
+  }
+  .progress-bar progress {
+    width: 100%;
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 10px;
+  }
+  .progress-bar progress::-webkit-progress-bar {
+    background-color: #ddd;
+    border-radius: 10px;
+  }
+  .progress-bar progress::-webkit-progress-value {
+    background-color: var(--Moderate-cyan);
+    border-radius: 10px;
+  }
+  .three {
+    align-items: start;
+    text-align: left;
+    padding: 15px;
+  }
+  
+  .thin {
+    border: solid 1px var(--Dark-gray);
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .thin button {
+    padding: 10px 20px;
+    border-radius: 40px;
+    color: white;
+    border: transparent;
+  }
+  .edition {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .edition p {
+    color: var(--Moderate-cyan);
+  }
+  .first {
+    margin-top: 15px;
+  }
+  .third {
+    opacity: 0.5;
+  }
+  .second {
+    margin: 20px 0;
+  }
+  .remain {
+    display: flex;
+    align-items: center;
+  }
+  .remain span {
+    margin-left: 10px;
+  }
+  .first button,
+  .second button {
+    background-color: var(--Moderate-cyan);
+    transition: 0.5s;
+  }
+  .first button:hover,
+  .second button:hover {
+    background-color: var(--Dark-cyan);
+    cursor: pointer;
+  }
+  .third button {
+    background-color: var(--Dark-gray);
+    color: white;
+  }
+  .number {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
