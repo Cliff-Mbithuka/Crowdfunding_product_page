@@ -65,5 +65,8 @@ body.fixed {
   .menu ul li a {
     text-decoration: none;
     color: white;
-   
   }
+  .open,
+.close {
+  display: none;
+}
