@@ -241,7 +241,7 @@ body.fixed {
 
   .modal,
 .thank-you {
-  /* display: none; */
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -263,3 +263,133 @@ body.fixed {
 .modal-wrapper{
   margin: 2% auto;
 }
+.thank-you-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    width: 470px;
+    padding: 10px;
+    margin: 12% auto;
+  }
+  .thank-you-content h2 {
+    margin: 10px 0;
+  }
+  .thank-you-content img {
+    margin-top: 10px;
+  }
+  .thank-you-content button {
+    margin: 14px 0;
+    padding: 10px;
+    border-radius: 40px;
+    width: 30%;
+    color: white;
+    background-color: var(--Moderate-cyan);
+    border: none;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  .thank-you-content button:hover {
+    background-color: var(--Dark-cyan);
+  }
+  .modal-wrapper p {
+    margin: 5px 0;
+    color: var(--Dark-gray);
+  }
+  .close-icon {
+    float: right;
+    cursor: pointer;
+  }
+  .pledge {
+    padding: 20px;
+    border: solid 1px var(--Dark-gray);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: 0.5s;
+  }
+  .pledge:hover {
+    cursor: pointer;
+    border: solid 2px var(--Dark-cyan);
+  }
+  .left {
+    display: flex;
+  }
+  .left h4 {
+    margin-left: 10px;
+  }
+  .left h4:hover {
+    color: var(--Moderate-cyan);
+    cursor: pointer;
+  }
+  .upper {
+    display: flex;
+    flex-direction: column;
+  }
+  .label {
+    display: flex;
+    align-items: center;
+  }
+  .inline {
+    cursor: pointer;
+  }
+  .remain-modal {
+    display: flex;
+  }
+  .special {
+    margin-left: 10px;
+    flex-direction: column;
+  }
+  .remain-modal h4:hover {
+    color: var(--Moderate-cyan);
+    cursor: pointer;
+  }
+  .remain-modal h5 {
+    margin-top: 5px;
+    color: var(--Moderate-cyan);
+    font-weight: bold;
+  }
+  .remain-modal span {
+    margin-left: 10px;
+  }
+  .box-three {
+    flex-direction: column;
+  }
+  .below {
+    margin-top: 2em;
+    display: none;
+  }
+  
+  .below button {
+    padding: 10px;
+    border-radius: 40px;
+    margin-top: 15px;
+    border: none;
+    color: var(--Dark-gray);
+    transition: 0.5s;
+  }
+  .btn {
+    display: flex;
+    justify-content: space-between;
+  }
+  .below button span {
+    margin-left: 10px;
+    color: var(--Black);
+    font-weight: bold;
+  }
+  .below button:hover {
+    cursor: pointer;
+    border: solid 2px var(--Moderate-cyan);
+  }
+  .Continue {
+    margin-left: 10px;
+    transition: 0.5s;
+  }
+  .Continue:hover {
+    background-color: var(--Dark-cyan);
+    color: white;
+    border: none;
+  }
+  .box-four {
+    opacity: 0.3;
+  }
