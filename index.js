@@ -24,3 +24,21 @@ openModal.onclick = function () {
     modal.style.display = "none";
     document.body.classList.remove("fixed");
   };
+
+  //enter reward
+//   const pledges = document.querySelectorAll(".pledge");
+
+//   pledges.forEach(function(pledge){
+//     const clickRadio = document.querySelector(".inline");
+//     clickRadio.addEventListener("click", function(){
+//         pledges.forEach(function(item){
+//             if(item !== pledge){
+//                 item.classList.remove("below");
+//             }
+//         })
+//         pledge.classList.toggle("below");
+//     })
+//   })
+
+
+
