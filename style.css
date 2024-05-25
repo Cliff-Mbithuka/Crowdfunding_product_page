@@ -43,3 +43,27 @@ body.fixed {
     height: 100%;
     object-fit: cover;
   }
+
+  .container {
+    width: 100%;
+    margin: 45px 0;
+    max-width: 1100px;
+  }
+
+  /*-------Header------*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+  }
+  .menu ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .menu ul li a {
+    text-decoration: none;
+    color: white;
+   
+  }
