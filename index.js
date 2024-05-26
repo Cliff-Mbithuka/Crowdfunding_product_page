@@ -10,35 +10,41 @@ selectReward.forEach(function (button) {
   });
 });
 
-//Opn and close modal
-const modal = document.getElementById("modal");
-const openModal = document.getElementById("openModal");
-const closeIcon = document.getElementsByClassName("close-icon")[0];
+//close modal
+const closeIcon = document.querySelector(".close-icon");
+closeIcon.onclick = function () {
+  modal.style.display = "none";
+  document.body.classList.remove("fixed");
+};
 
-openModal.onclick = function () {
-    modal.style.display = "block";
-    document.body.classList.add("fixed");
-  };
-  
-  closeIcon.onclick = function () {
-    modal.style.display = "none";
-    document.body.classList.remove("fixed");
-  };
+// enter reward  (Using Selectors inside the element)
+// const pledges = document.querySelectorAll(".pledge");
 
-  //enter reward
-//   const pledges = document.querySelectorAll(".pledge");
-
-//   pledges.forEach(function(pledge){
-//     const clickRadio = document.querySelector(".inline");
-//     clickRadio.addEventListener("click", function(){
-//         pledges.forEach(function(item){
-//             if(item !== pledge){
-//                 item.classList.remove("below");
-//             }
-//         })
-//         pledge.classList.toggle("below");
-//     })
+// pledges.forEach(function(pledge){
+//   const clickRadio = document.querySelector(".inline");
+//   clickRadio.addEventListener("click", function(){
+//       pledges.forEach(function(item){
+//           if(item !== pledge){
+//               item.classList.remove("show-text");
+//           }
+//       })
+//       pledge.classList.toggle("show-text");
 //   })
+// });
 
+// //traversing the DOM
+const radiobtns = document.querySelectorAll(".inline");
+radiobtns.forEach(function (radio) {
+  radio.addEventListener("click", function (e) {
+    const pledge = e.target.closest(".pledge");
+    pledge.classList.toggle("show-text");
 
+    const allPledges = document.querySelectorAll(".pledge");
+    allPledges.forEach(function(pledge){
+      pledge.querySelector(".below").style.display = "none";
+    });
+
+    pledge.querySelector(".below").style.display = "block";
+  });
+});
 

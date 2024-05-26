@@ -359,6 +359,11 @@ body.fixed {
     margin-top: 2em;
     display: none;
   }
+
+.show-text .below{
+  display: block;
+}
+
   
   .below button {
     padding: 10px;
