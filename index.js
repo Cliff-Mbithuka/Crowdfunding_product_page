@@ -1,4 +1,7 @@
 const selectReward = document.querySelectorAll(".select");
+const submitButtons = document.querySelectorAll('.Continue');
+
+
 
 //select reward
 selectReward.forEach(function (button) {
@@ -47,4 +50,33 @@ radiobtns.forEach(function (radio) {
     pledge.querySelector(".below").style.display = "block";
   });
 });
+
+// *************event listener
+// submit button
+submitButtons.forEach(function(button) {
+  button.addEventListener('click', ClickSubmitButton);
+});
+
+
+//**** Functions
+// submit button
+function ClickSubmitButton(e) {
+  e.preventDefault(); 
+  const pledgeBox = e.target.closest('.pledge');
+  const dolarInput = pledgeBox.querySelector('.dolar');
+  const value = dolarInput.value;
+  const id = new Date().getTime().toString();
+  
+  //Add to local Storage
+  addToLocalStorage(id, value);
+}
+
+
+//****************local storage */
+function addToLocalStorage(id, value){
+  
+}
+
+
+
 

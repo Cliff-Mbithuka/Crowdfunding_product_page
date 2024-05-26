@@ -392,7 +392,7 @@ button img:hover {
   border-radius: 40px;
   border: 1px solid var(--Dark-gray);
   margin: 0 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .Continue {
