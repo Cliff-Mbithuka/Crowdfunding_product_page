@@ -528,15 +528,23 @@ button img:hover {
     flex-direction: column;
     align-items: center;
   }
-  .btn button {
+  .btn button,input {
     width: 100%;
-    margin: 5px 0;
+    margin: 3px 0;
   }
   .next {
     display: flex;
     flex-direction: row;
     width: 100%;
+  }.below input {
+    padding: 0 0.5rem;
+    width: 100%;
+    border-radius: 40px;
+    border: 1px solid var(--Dark-gray);
+    margin: 0 0.5rem;
+    font-size: 1rem;
   }
+
   .Continue {
     margin-left: 10px;
   }

@@ -1,5 +1,6 @@
 const selectReward = document.querySelectorAll(".select");
 const submitButtons = document.querySelectorAll(".Continue");
+const thankYouPage = document.getElementById("thankYouPage");
 
 //select reward
 selectReward.forEach(function (button) {
@@ -108,6 +109,20 @@ function addToLocalStorage(id, value) {
   function getLocalStorage(){
   return localStorage.getItem("list")?JSON.parse(localStorage.getItem('list')):[];
   };
+
+  //open Thank you
+  const openThankYou = document.querySelectorAll(".Continue");
+  openThankYou.forEach(function (button) {
+    button.addEventListener("click", () =>{
+      modal.style.display = "none";
+      thankYouPage.style.display = "block";
+    })
+  })
+ //close thank you
+ closeThankYouBtn.onclick = function () {
+  thankYouPage.style.display = "none";
+  document.body.classList.remove("fixed");
+};
 
 
                    // Days counter
