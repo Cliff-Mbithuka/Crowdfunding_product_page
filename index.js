@@ -56,23 +56,6 @@ submitButtons.forEach(function (button) {
   button.addEventListener("click", ClickSubmitButton);
 });
 
-//**** Functions
-// submit button
-// function ClickSubmitButton(e) {
-//   e.preventDefault();
-//   const pledgeBox = e.target.closest(".pledge");
-//   const dolarInput = pledgeBox.querySelector(".dolar");
-//   const value = dolarInput.value;
-//   const id = new Date().getTime().toString();
-
-//   //Add to local Storage
-//   addToLocalStorage(id, value);
-
-// }
-
-
-
-
 // submit button
 function ClickSubmitButton(e) {
   e.preventDefault();
@@ -91,7 +74,7 @@ function ClickSubmitButton(e) {
 
 // Function to update the total backed amount
 function updateTotalBackedAmount(amount) {
-  const totalBackedElement = document.querySelector('div:nth-child(1) h1');
+  const totalBackedElement = document.querySelector('.total');
   let currentAmount = parseFloat(totalBackedElement.textContent.replace(/[^0-9.-]+/g,""));
   currentAmount += parseFloat(amount);
   totalBackedElement.textContent = `$${currentAmount.toLocaleString()}`;
