@@ -388,7 +388,7 @@ button img:hover {
 }
 .below input {
   padding: 0.25rem 0.5rem;
-  width: 4rem;
+  width: 5rem;
   border-radius: 40px;
   border: 1px solid var(--Dark-gray);
   margin: 0 0.5rem;
