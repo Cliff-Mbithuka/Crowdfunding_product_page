@@ -387,11 +387,11 @@ button img:hover {
   border: solid 2px var(--Moderate-cyan);
 }
 .below input {
-  padding: 0.25rem 0.5rem;
-  width: 5rem;
+  padding: .25em 1.25em;
+   width: 7em; 
   border-radius: 40px;
   border: 1px solid var(--Dark-gray);
-  margin: 0 0.5rem;
+  margin: 0 0.5em;
   font-size: 1rem;
 }
 

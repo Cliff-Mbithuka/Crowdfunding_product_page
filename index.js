@@ -1,6 +1,15 @@
 const selectReward = document.querySelectorAll(".select");
 const submitButtons = document.querySelectorAll(".Continue");
 const thankYouPage = document.getElementById("thankYouPage");
+const totals = localStorage.setItem('totalAmount', 0);
+const percentage =  localStorage.setItem('percentage', 0);
+const totalBackers =  localStorage.setItem('totalBackers', 0);
+let myTotals = document.getElementById('totals');
+myTotals.innerHTML = localStorage.getItem('totalAmount');
+let myBackers = document.getElementById('backersTwo');
+myBackers.innerHTML = localStorage.getItem('totalBackers');
+let myPercentage = document.getElementById('mypercentages');
+myPercentage.innerHTML = localStorage.getItem('percentage');
 
 //select reward
 selectReward.forEach(function (button) {
@@ -58,17 +67,34 @@ submitButtons.forEach(function (button) {
 
 // submit button
 function ClickSubmitButton(e) {
+  const oldAmount = localStorage.getItem('totalAmount');
+  const oldBackers = localStorage.getItem('totalBackers');
+ const oldPercentage = localStorage.getItem('percentage');
   e.preventDefault();
   const pledgeBox = e.target.closest('.pledge');
   const dolarInput = pledgeBox.querySelector('.dolar');
   const value = parseFloat(dolarInput.value);
   const id = new Date().getTime().toString();
 
+
+  const finalAmount = parseFloat(oldAmount) + parseFloat(value);
+  localStorage.setItem('totalAmount', finalAmount);
+const newBackers = parseInt(oldBackers) + 1;
+localStorage.setItem('totalBackers', newBackers);
+myTotals.innerHTML = localStorage.getItem('totalAmount');
+myBackers.innerHTML = localStorage.getItem('totalBackers');
+ const newPercentage = parseInt(oldPercentage) + 10;
+localStorage.setItem('percentage', newPercentage);
+myPercentage.value = localStorage.getItem('percentage');
+
+
+dolarInput.value = "";
   // Update total backed amount
-  updateTotalBackedAmount(value);
+  // updateTotalBackedAmount(value);
 
   // Add to local Storage
-  addToLocalStorage(id, value);
+  // addToLocalStorage(id, value);
+
 }
 
 
