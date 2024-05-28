@@ -32,7 +32,7 @@ const sectionContainer = document.querySelector(".three");
 
 window.addEventListener("DOMContentLoaded", function(){
   displayMenuItems(menu);
-  setUpEventListeners();
+  mySelectReward();
 });
 
 
@@ -63,7 +63,7 @@ function displayMenuItems(menuItems){
   sectionContainer.innerHTML = displayMenu;
 }
 
-function setUpEventListeners() {
+function mySelectReward() {
   const selectReward = document.querySelectorAll(".select");
   const modal = document.getElementById("modal");
 
@@ -109,11 +109,12 @@ function ClickSubmitButton(e) {
   const pledgeBox = e.target.closest(".pledge");
   const dolarInput = pledgeBox.querySelector(".dolar");
   const value = parseFloat(dolarInput.value);
-  const id = new Date().getTime().toString();
+
 
   const finalAmount = parseFloat(oldAmount) + parseFloat(value);
   localStorage.setItem("totalAmount", finalAmount);
   myTotals.innerHTML = localStorage.getItem("totalAmount");
+ 
 
   const newBackers = parseInt(oldBackers) + 1;
   localStorage.setItem("totalBackers", newBackers);
@@ -124,6 +125,7 @@ function ClickSubmitButton(e) {
 
   const newBambooPledge = parseInt(oldBambooPledge) - 1;
   localStorage.setItem("bamboopledge", newBambooPledge);
+  let myBambooPledge = document.getElementById("bamboo100");
   myBambooPledge.innerHTML = localStorage.getItem("bamboopledge");
 
   dolarInput.value = "";
