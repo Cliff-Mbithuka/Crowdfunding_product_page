@@ -17,7 +17,7 @@ body {
   font-family: "Commissioner", sans-serif;
   display: flex;
   justify-content: center;
-  background-color: rgb(253, 250, 246);
+
 }
 body.fixed {
   overflow: hidden;
@@ -185,7 +185,7 @@ button img:hover {
 }
 
 .thin {
-  border: solid 1px var(--Dark-gray);
+  border: solid 0.3px var(--Dark-gray);
   padding: 10px;
   border-radius: 10px;
 }
@@ -254,14 +254,14 @@ button img:hover {
 }
 .modal-wrapper,
 .thank-you-content {
-  background-color: #fefefe;
+ background-color: #fefefe;
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
-  border-radius: 5px;
+  border-radius: 5px; 
 }
 .modal-wrapper {
-  margin: 2% auto;
+  margin: 8% auto;
 }
 .thank-you-content {
   display: flex;

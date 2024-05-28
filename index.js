@@ -1,25 +1,133 @@
-const selectReward = document.querySelectorAll(".select");
+const menu = [
+  {
+    id: 1,
+    title: "Bamboo Stand",
+    amount: "Pledge $25 or more",
+    remain: 101,
+    left: "left",
+    button: "Select Reward",
+    desc: "You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.",
+  },
+  {
+    id: 2,
+    title: "Black Edition Stand",
+    amount: "Pledge $75 or more",
+    remain: 64,
+    left: "left",
+    button: "Select Reward",
+    desc: "You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.",
+  },
+  {
+    id: 3,
+    title: "Mahogany Special Edition",
+    amount: "Pledge $200 or more",
+    remain: 0,
+    left: "left",
+    button: "Out of Stock",
+    desc: "You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.",
+  }
+];
+
+const sectionContainer = document.querySelector(".three");
+
+window.addEventListener("DOMContentLoaded", function(){
+  displayMenuItems(menu);
+  setUpEventListeners();
+});
+
+
+function displayMenuItems(menuItems){
+  let displayMenu = menuItems.map(function(item, index){
+    let itemClass = "thin";
+    if (index === 0) itemClass += " first";
+    if (index === 1) itemClass += " second";
+    if (index === 2) itemClass += " third";
+    return `<div class="${itemClass}">
+      <div class="edition">
+        <h3 id="bookmarking">${item.title}</h3>
+        <p>${item.amount}</p>
+      </div>
+      <p>
+        ${item.desc}
+      </p>
+      <div class="number">
+        <div class="remain">
+          <h1 id="bamboo100">${item.remain}</h1>
+          <span>${item.left}</span>
+        </div>
+        <button class="select">${item.button}</button>
+      </div>
+    </div>`;
+  });
+  displayMenu = displayMenu.join("");
+  sectionContainer.innerHTML = displayMenu;
+}
+
+function setUpEventListeners() {
+  const selectReward = document.querySelectorAll(".select");
+  const modal = document.getElementById("modal");
+
+  selectReward.forEach(function(button) {
+    button.addEventListener("click", () => {
+      modal.style.display = "block";
+      document.body.classList.add("fixed");
+    });
+  });
+}
+
+
 const submitButtons = document.querySelectorAll(".Continue");
 const thankYouPage = document.getElementById("thankYouPage");
-const totals = localStorage.setItem('totalAmount', 0);
-const percentage =  localStorage.setItem('percentage', 0);
-const totalBackers =  localStorage.setItem('totalBackers', 0);
-let myTotals = document.getElementById('totals');
-myTotals.innerHTML = localStorage.getItem('totalAmount');
-let myBackers = document.getElementById('backersTwo');
-myBackers.innerHTML = localStorage.getItem('totalBackers');
-let myPercentage = document.getElementById('mypercentages');
-myPercentage.innerHTML = localStorage.getItem('percentage');
+//pledges
+const totals = localStorage.setItem("totalAmount", 0);
+const percentage = localStorage.setItem("percentage", 0);
+const totalBackers = localStorage.setItem("totalBackers", 0);
+let myTotals = document.getElementById("totals");
+myTotals.innerHTML = localStorage.getItem("totalAmount");
+let myBackers = document.getElementById("backersTwo");
+myBackers.innerHTML = localStorage.getItem("totalBackers");
+let myPercentage = document.getElementById("mypercentages");
+myPercentage.innerHTML = localStorage.getItem("percentage");
+//pledges left
+const bambooPledge = localStorage.setItem("bamboopledge", 101);
+let myBambooPledge = document.getElementById("bamboo100");
+myBambooPledge.innerHTML = localStorage.getItem("bamboopledge");
 
-//select reward
-selectReward.forEach(function (button) {
-  button.addEventListener("click", () => {
-    modal.style.display = "block";
-    document.body.classList.add("fixed");
-    bookmarked.innerHTML = "bookmarked";
-    bookmarked.classList.toggle("changed");
-  });
+// *************event listener
+// submit button
+submitButtons.forEach(function (button) {
+  button.addEventListener("click", ClickSubmitButton);
 });
+
+// submit button
+function ClickSubmitButton(e) {
+  const oldAmount = localStorage.getItem("totalAmount");
+  const oldBackers = localStorage.getItem("totalBackers");
+  const oldPercentage = localStorage.getItem("percentage");
+  const oldBambooPledge = localStorage.getItem("bamboopledge");
+  e.preventDefault();
+  const pledgeBox = e.target.closest(".pledge");
+  const dolarInput = pledgeBox.querySelector(".dolar");
+  const value = parseFloat(dolarInput.value);
+  const id = new Date().getTime().toString();
+
+  const finalAmount = parseFloat(oldAmount) + parseFloat(value);
+  localStorage.setItem("totalAmount", finalAmount);
+  myTotals.innerHTML = localStorage.getItem("totalAmount");
+
+  const newBackers = parseInt(oldBackers) + 1;
+  localStorage.setItem("totalBackers", newBackers);
+  myBackers.innerHTML = localStorage.getItem("totalBackers");
+  const newPercentage = parseInt(oldPercentage) + 10;
+  localStorage.setItem("percentage", newPercentage);
+  myPercentage.value = localStorage.getItem("percentage");
+
+  const newBambooPledge = parseInt(oldBambooPledge) - 1;
+  localStorage.setItem("bamboopledge", newBambooPledge);
+  myBambooPledge.innerHTML = localStorage.getItem("bamboopledge");
+
+  dolarInput.value = "";
+}
 
 //close modal
 const closeIcon = document.querySelector(".close-icon");
@@ -28,20 +136,19 @@ closeIcon.onclick = function () {
   document.body.classList.remove("fixed");
 };
 
-// enter reward  (Using Selectors inside the element)
-// const pledges = document.querySelectorAll(".pledge");
-
-// pledges.forEach(function(pledge){
-//   const clickRadio = document.querySelector(".inline");
-//   clickRadio.addEventListener("click", function(){
-//       pledges.forEach(function(item){
-//           if(item !== pledge){
-//               item.classList.remove("show-text");
-//           }
-//       })
-//       pledge.classList.toggle("show-text");
-//   })
-// });
+//open Thank you
+const openThankYou = document.querySelectorAll(".Continue");
+openThankYou.forEach(function (button) {
+  button.addEventListener("click", () => {
+    modal.style.display = "none";
+    thankYouPage.style.display = "block";
+  });
+});
+//close thank you
+closeThankYouBtn.onclick = function () {
+  thankYouPage.style.display = "none";
+  document.body.classList.remove("fixed");
+};
 
 // //traversing the DOM
 const radiobtns = document.querySelectorAll(".inline");
@@ -59,91 +166,14 @@ radiobtns.forEach(function (radio) {
   });
 });
 
-// *************event listener
-// submit button
-submitButtons.forEach(function (button) {
-  button.addEventListener("click", ClickSubmitButton);
-});
-
-// submit button
-function ClickSubmitButton(e) {
-  const oldAmount = localStorage.getItem('totalAmount');
-  const oldBackers = localStorage.getItem('totalBackers');
- const oldPercentage = localStorage.getItem('percentage');
-  e.preventDefault();
-  const pledgeBox = e.target.closest('.pledge');
-  const dolarInput = pledgeBox.querySelector('.dolar');
-  const value = parseFloat(dolarInput.value);
-  const id = new Date().getTime().toString();
-
-
-  const finalAmount = parseFloat(oldAmount) + parseFloat(value);
-  localStorage.setItem('totalAmount', finalAmount);
-const newBackers = parseInt(oldBackers) + 1;
-localStorage.setItem('totalBackers', newBackers);
-myTotals.innerHTML = localStorage.getItem('totalAmount');
-myBackers.innerHTML = localStorage.getItem('totalBackers');
- const newPercentage = parseInt(oldPercentage) + 10;
-localStorage.setItem('percentage', newPercentage);
-myPercentage.value = localStorage.getItem('percentage');
-
-
-dolarInput.value = "";
-  // Update total backed amount
-  // updateTotalBackedAmount(value);
-
-  // Add to local Storage
-  // addToLocalStorage(id, value);
-
+// Days counter
+function updateCountdown() {
+  const today = new Date();
+  const targetDate = new Date(today.getFullYear(), 9, 17);
+  const difference = targetDate - today;
+  const daysLeft = Math.ceil(difference / (1000 * 60 * 60 * 24));
+  document.getElementById("daysLeft").textContent = daysLeft;
 }
+updateCountdown();
 
-
-// Function to update the total backed amount
-function updateTotalBackedAmount(amount) {
-  const totalBackedElement = document.querySelector('.total');
-  let currentAmount = parseFloat(totalBackedElement.textContent.replace(/[^0-9.-]+/g,""));
-  currentAmount += parseFloat(amount);
-  totalBackedElement.textContent = `$${currentAmount.toLocaleString()}`;
-};
-
-//****************local storage */
-function addToLocalStorage(id, value) {
-  const  plege = { id, value };
-    let items = getLocalStorage();
-    items.push(plege);
-    localStorage.setItem("list", JSON.stringify(items));
-  
-  }
-  
-  function getLocalStorage(){
-  return localStorage.getItem("list")?JSON.parse(localStorage.getItem('list')):[];
-  };
-
-  //open Thank you
-  const openThankYou = document.querySelectorAll(".Continue");
-  openThankYou.forEach(function (button) {
-    button.addEventListener("click", () =>{
-      modal.style.display = "none";
-      thankYouPage.style.display = "block";
-    })
-  })
- //close thank you
- closeThankYouBtn.onclick = function () {
-  thankYouPage.style.display = "none";
-  document.body.classList.remove("fixed");
-};
-
-
-                   // Days counter
-                   function updateCountdown() {
-                    const today = new Date();
-                    const targetDate = new Date(today.getFullYear(), 9, 17);
-                    const difference = targetDate - today;
-                    const daysLeft = Math.ceil(difference / (1000 * 60 * 60 * 24));
-                    document.getElementById('daysLeft').textContent = daysLeft;
-                  }
-                  updateCountdown();
-                
-                  setInterval(updateCountdown, 1000 * 60 * 60 * 24);
-
-  
+setInterval(updateCountdown, 1000 * 60 * 60 * 24);
