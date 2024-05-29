@@ -35,7 +35,6 @@ window.addEventListener("DOMContentLoaded", function(){
   mySelectReward();
 });
 
-
 function displayMenuItems(menuItems){
   let displayMenu = menuItems.map(function(item, index){
     let itemClass = "thin";
@@ -75,7 +74,6 @@ function mySelectReward() {
   });
 }
 
-
 const submitButtons = document.querySelectorAll(".Continue");
 const thankYouPage = document.getElementById("thankYouPage");
 //pledges
@@ -87,7 +85,7 @@ function initializeLocalStorage() {
     localStorage.setItem("totalAmount", 0);
   }
   if (localStorage.getItem("percentage") === null) {
-    localStorage.setItem("percentage", 10);
+    localStorage.setItem("percentage", 0);
   }
   if (localStorage.getItem("totalBackers") === null) {
     localStorage.setItem("totalBackers", 0);
@@ -113,9 +111,7 @@ myBambooPledge.innerHTML = localStorage.getItem("bambooPledge");
 // submit button
 submitButtons.forEach(function (button) {
   button.addEventListener("click", ClickSubmitButton);
-  
 });
-
 
 // submit button
 function ClickSubmitButton(e) {
@@ -124,6 +120,7 @@ function ClickSubmitButton(e) {
   const oldPercentage = localStorage.getItem("percentage");
   const oldBambooPledge = localStorage.getItem("bambooPledge");
   e.preventDefault();
+ 
   const pledgeBox = e.target.closest(".pledge");
   const dolarInput = pledgeBox.querySelector(".dolar");
   const value = parseFloat(dolarInput.value);
@@ -142,12 +139,20 @@ function ClickSubmitButton(e) {
     dolarInput.value = "";
     return;
   }
-
+  if (value > 100000) {
+    alert("The maximum pledge amount is $100,000.");
+    dolarInput.value = "";
+    return;
+  }
   const finalAmount = parseFloat(oldAmount) + parseFloat(value);
+  if (finalAmount > 100000) {
+      alert("The total pledge amount cannot exceed $100,000.");
+      dolarInput.value = "";
+      return;
+    }
   localStorage.setItem("totalAmount", finalAmount);
   myTotals.innerHTML = localStorage.getItem("totalAmount");
  
-
   const newBackers = parseInt(oldBackers) + 1;
   localStorage.setItem("totalBackers", newBackers);
   myBackers.innerHTML = localStorage.getItem("totalBackers");
@@ -162,8 +167,6 @@ function ClickSubmitButton(e) {
 
   dolarInput.value = "";
 }
-
-
 
 //close modal
 const closeIcon = document.querySelector(".close-icon");
