@@ -82,6 +82,7 @@ body.fixed {
   margin: auto;
   padding: 10px;
   margin-top: 180px;
+ 
 }
 .box {
   max-width: 600px;
@@ -90,6 +91,7 @@ body.fixed {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
+  box-shadow: 0 0 0.3em rgb(0 0 0 / .1);
 }
 .box p {
   color: var(--Dark-gray);
@@ -263,7 +265,7 @@ button img:hover {
   border-radius: 5px; 
 }
 .modal-wrapper {
-  margin: 8% auto;
+  margin: 2% auto;
 }
 .thank-you-content {
   display: flex;
@@ -346,6 +348,10 @@ button img:hover {
 }
 .remain-modal h4{
   margin-right: 10px;
+  
+}
+.remain-modal span{
+  color: var(--Dark-gray);
 }
 .remain-modal h5{
   margin-left: 10px;

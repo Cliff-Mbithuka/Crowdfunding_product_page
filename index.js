@@ -79,37 +79,69 @@ function mySelectReward() {
 const submitButtons = document.querySelectorAll(".Continue");
 const thankYouPage = document.getElementById("thankYouPage");
 //pledges
-const totals = localStorage.setItem("totalAmount", 0);
-const percentage = localStorage.setItem("percentage", 0);
-const totalBackers = localStorage.setItem("totalBackers", 0);
+// const totals = localStorage.setItem("totalAmount", 0);
+// const percentage = localStorage.setItem("percentage", 0);
+// const totalBackers = localStorage.setItem("totalBackers", 0);
+function initializeLocalStorage() {
+  if (localStorage.getItem("totalAmount") === null) {
+    localStorage.setItem("totalAmount", 0);
+  }
+  if (localStorage.getItem("percentage") === null) {
+    localStorage.setItem("percentage", 10);
+  }
+  if (localStorage.getItem("totalBackers") === null) {
+    localStorage.setItem("totalBackers", 0);
+  }
+  if (localStorage.getItem("bambooPledge") === null) {
+    localStorage.setItem("bambooPledge", 101);
+  }
+}
+initializeLocalStorage();
+
 let myTotals = document.getElementById("totals");
 myTotals.innerHTML = localStorage.getItem("totalAmount");
 let myBackers = document.getElementById("backersTwo");
 myBackers.innerHTML = localStorage.getItem("totalBackers");
 let myPercentage = document.getElementById("mypercentages");
-myPercentage.innerHTML = localStorage.getItem("percentage");
+myPercentage.value = localStorage.getItem("percentage");
 //pledges left
-const bambooPledge = localStorage.setItem("bamboopledge", 101);
+// const bambooPledge = localStorage.setItem("bambooPledge", 101);
 let myBambooPledge = document.getElementById("bamboo100");
-myBambooPledge.innerHTML = localStorage.getItem("bamboopledge");
+myBambooPledge.innerHTML = localStorage.getItem("bambooPledge");
 
 // *************event listener
 // submit button
 submitButtons.forEach(function (button) {
   button.addEventListener("click", ClickSubmitButton);
+  
 });
+
 
 // submit button
 function ClickSubmitButton(e) {
   const oldAmount = localStorage.getItem("totalAmount");
   const oldBackers = localStorage.getItem("totalBackers");
   const oldPercentage = localStorage.getItem("percentage");
-  const oldBambooPledge = localStorage.getItem("bamboopledge");
+  const oldBambooPledge = localStorage.getItem("bambooPledge");
   e.preventDefault();
   const pledgeBox = e.target.closest(".pledge");
   const dolarInput = pledgeBox.querySelector(".dolar");
   const value = parseFloat(dolarInput.value);
 
+  let minPledgeAmount = 1;
+  if (pledgeBox.classList.contains("box-two")) {
+    minPledgeAmount = 25;
+  } else if (pledgeBox.classList.contains("box-three")) {
+    minPledgeAmount = 75;
+  } else if (pledgeBox.classList.contains("box-four")) {
+    minPledgeAmount = 200;
+  }
+
+  if (isNaN(value) || value < minPledgeAmount) {
+    alert(`Please enter a valid pledge amount of at least $${minPledgeAmount}.`);
+    dolarInput.value = "";
+    return;
+  }
 
   const finalAmount = parseFloat(oldAmount) + parseFloat(value);
   localStorage.setItem("totalAmount", finalAmount);
@@ -119,17 +151,19 @@ function ClickSubmitButton(e) {
   const newBackers = parseInt(oldBackers) + 1;
   localStorage.setItem("totalBackers", newBackers);
   myBackers.innerHTML = localStorage.getItem("totalBackers");
-  const newPercentage = parseInt(oldPercentage) + 10;
+  const newPercentage = parseInt(oldPercentage) + finalAmount / 100000 * 100;
   localStorage.setItem("percentage", newPercentage);
   myPercentage.value = localStorage.getItem("percentage");
 
   const newBambooPledge = parseInt(oldBambooPledge) - 1;
-  localStorage.setItem("bamboopledge", newBambooPledge);
+  localStorage.setItem("bambooPledge", newBambooPledge);
   let myBambooPledge = document.getElementById("bamboo100");
-  myBambooPledge.innerHTML = localStorage.getItem("bamboopledge");
+  myBambooPledge.innerHTML = localStorage.getItem("bambooPledge");
 
   dolarInput.value = "";
 }
+
+
 
 //close modal
 const closeIcon = document.querySelector(".close-icon");
@@ -175,6 +209,10 @@ function updateCountdown() {
   const difference = targetDate - today;
   const daysLeft = Math.ceil(difference / (1000 * 60 * 60 * 24));
   document.getElementById("daysLeft").textContent = daysLeft;
+  if(daysLeft < 0){
+    clearInterval(updateCountdown);
+    document.getElementById("noDay").innerHTML = `<h1 id="daysLeft">N/A</h4>`;
+  }
 }
 updateCountdown();
 
