@@ -68,6 +68,9 @@ body.fixed {
   text-decoration: none;
   color: white;
 }
+.menu hr {
+  display: none;
+}
 .open,
 .close {
   display: none;
@@ -328,9 +331,7 @@ button img:hover {
 }
  .upper {
   display: flex;
-  
 }
-
 .label {
  margin-left: 15px;
  
@@ -356,28 +357,18 @@ button img:hover {
 .remain-modal h5{
   margin-left: 10px;
   color: var(--Moderate-cyan);
+  font-weight: bold;
 }
-/*
-.inline {
-  cursor: pointer;
-}
-
-.special {
-  margin-left: 10px;
-  flex-direction: column;
+.show{
+  display: none;
 }
 .remain-modal h4:hover {
   color: var(--Moderate-cyan);
   cursor: pointer;
 }
-.remain-modal h5 {
-  margin-top: 5px;
-  color: var(--Moderate-cyan);
-  font-weight: bold;
+.inline {
+  cursor: pointer;
 }
-.remain-modal span {
-  margin-left: 10px;
-} */
 .box-three {
   flex-direction: column;
 }
@@ -385,11 +376,12 @@ button img:hover {
   margin-top: 2em;
   display: none;
 }
-
 .show-text .below {
   display: block;
 }
-
+.next{
+  margin-top: 10px;
+}
 .below button {
   padding: 10px;
   border-radius: 40px;
@@ -420,7 +412,6 @@ button img:hover {
   margin: 0 0.5em;
   font-size: 1rem;
 }
-
 .Continue {
   margin-left: 10px;
   transition: 0.5s;
@@ -449,9 +440,25 @@ button img:hover {
   }
 
   /*-------menu-----------*/
+  .menu{
+    position: absolute;
+    right: 24px;
+    width: 90%;
+    margin-top: 2em;
+    display: none;
+    background-color: white;
+    border-radius: 5px;
+    z-index: 99;
+    
+  }
   .menu ul li {
     display: block;
     padding: 8px;
+  }
+  .menu ul li a {
+    color: var(--Black);
+    font-weight: bold;
+    padding-left: 7px;
   }
   .open, .close{
     display: block;
@@ -462,23 +469,13 @@ button img:hover {
     display: none;
     right: 20px;
 }
-  .menu{
-    position: absolute;
-    right: 35px;
-    width: 80%;
-    margin-top: 2em;
-    display: none;
-    background-color: white;
-    border-radius: 5px;
-    z-index: 99;
-  }
+ 
+  .menu hr{
+    display: block;
+   color: var(--Dark-gray);
    
-  .menu ul li a {
-    color: var(--Black);
-    font-weight: 400;
-    padding-left: 7px;
+
   }
-  
 
   /*----wrapper-----*/
   .wrapper {
@@ -535,21 +532,26 @@ button img:hover {
   }
   .upper {
     display: flex;
-    flex-direction: column;
   }
-
+.hide{
+  display: none;
+}
+.show{
+  display: block;
+  display: flex;
+  margin-top: 5px;
+}
   .special {
-    flex-direction: column;
-    margin-left: 10px;
     display: flex;
-    padding: 0;
+    flex-direction: column;
   }
+   /*
   .special h4 {
     margin-bottom: 5px;
   }
   .special h5 {
     margin: 0;
-  }
+  } */
   .btn {
     flex-direction: column;
     align-items: center;

@@ -220,3 +220,20 @@ function updateCountdown() {
 updateCountdown();
 
 setInterval(updateCountdown, 1000 * 60 * 60 * 24);
+
+
+const deleteMenu = document.getElementById("close_Menu");
+const menuToggle = document.getElementById("menuToggle");
+const sideMenu = document.getElementById("sidemenu");
+//menu
+menuToggle.addEventListener('click', () => {
+  menuToggle.style.display = 'none';
+  deleteMenu.style.display = 'block';
+  sideMenu.style.display = 'block';
+});
+
+deleteMenu.addEventListener('click', () => {
+  deleteMenu.style.display = 'none';
+  menuToggle.style.display = 'block';
+  sideMenu.style.display = 'none';
+});
