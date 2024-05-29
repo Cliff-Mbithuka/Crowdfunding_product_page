@@ -94,7 +94,7 @@ body.fixed {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 0 0.3em rgb(0 0 0 / .1);
+  box-shadow: 0 0 0.6em rgb(0 0 0 / .3);
 }
 .box p {
   color: var(--Dark-gray);

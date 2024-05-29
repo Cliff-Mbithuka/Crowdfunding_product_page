@@ -156,7 +156,7 @@ function ClickSubmitButton(e) {
   const newBackers = parseInt(oldBackers) + 1;
   localStorage.setItem("totalBackers", newBackers);
   myBackers.innerHTML = localStorage.getItem("totalBackers");
-  const newPercentage = parseInt(oldPercentage) + finalAmount / 100000 * 100;
+  const newPercentage =  (finalAmount / 100000) * 100;
   localStorage.setItem("percentage", newPercentage);
   myPercentage.value = localStorage.getItem("percentage");
 
