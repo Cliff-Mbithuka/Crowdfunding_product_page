@@ -25,18 +25,18 @@ const menu = [
     left: "left",
     button: "Out of Stock",
     desc: "You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.",
-  }
+  },
 ];
 
 const sectionContainer = document.querySelector(".three");
 
-window.addEventListener("DOMContentLoaded", function(){
+window.addEventListener("DOMContentLoaded", function () {
   displayMenuItems(menu);
   mySelectReward();
 });
 
-function displayMenuItems(menuItems){
-  let displayMenu = menuItems.map(function(item, index){
+function displayMenuItems(menuItems) {
+  let displayMenu = menuItems.map(function (item, index) {
     let itemClass = "thin";
     if (index === 0) itemClass += " first";
     if (index === 1) itemClass += " second";
@@ -66,7 +66,7 @@ function mySelectReward() {
   const selectReward = document.querySelectorAll(".select");
   const modal = document.getElementById("modal");
 
-  selectReward.forEach(function(button) {
+  selectReward.forEach(function (button) {
     button.addEventListener("click", () => {
       modal.style.display = "block";
       document.body.classList.add("fixed");
@@ -77,9 +77,7 @@ function mySelectReward() {
 const submitButtons = document.querySelectorAll(".Continue");
 const thankYouPage = document.getElementById("thankYouPage");
 //pledges
-// const totals = localStorage.setItem("totalAmount", 0);
-// const percentage = localStorage.setItem("percentage", 0);
-// const totalBackers = localStorage.setItem("totalBackers", 0);
+
 function initializeLocalStorage() {
   if (localStorage.getItem("totalAmount") === null) {
     localStorage.setItem("totalAmount", 0);
@@ -103,7 +101,6 @@ myBackers.innerHTML = localStorage.getItem("totalBackers");
 let myPercentage = document.getElementById("mypercentages");
 myPercentage.value = localStorage.getItem("percentage");
 //pledges left
-// const bambooPledge = localStorage.setItem("bambooPledge", 101);
 let myBambooPledge = document.getElementById("bamboo100");
 myBambooPledge.innerHTML = localStorage.getItem("bambooPledge");
 
@@ -120,7 +117,7 @@ function ClickSubmitButton(e) {
   const oldPercentage = localStorage.getItem("percentage");
   const oldBambooPledge = localStorage.getItem("bambooPledge");
   e.preventDefault();
- 
+
   const pledgeBox = e.target.closest(".pledge");
   const dolarInput = pledgeBox.querySelector(".dolar");
   const value = parseFloat(dolarInput.value);
@@ -135,7 +132,9 @@ function ClickSubmitButton(e) {
   }
 
   if (isNaN(value) || value < minPledgeAmount) {
-    alert(`Please enter a valid pledge amount of at least $${minPledgeAmount}.`);
+    alert(
+      `Please enter a valid pledge amount of at least $${minPledgeAmount}.`
+    );
     dolarInput.value = "";
     return;
   }
@@ -146,17 +145,17 @@ function ClickSubmitButton(e) {
   }
   const finalAmount = parseFloat(oldAmount) + parseFloat(value);
   if (finalAmount > 100000) {
-      alert("The total pledge amount cannot exceed $100,000.");
-      dolarInput.value = "";
-      return;
-    }
+    alert("The total pledge amount cannot exceed $100,000.");
+    dolarInput.value = "";
+    return;
+  }
   localStorage.setItem("totalAmount", finalAmount);
   myTotals.innerHTML = localStorage.getItem("totalAmount");
- 
+
   const newBackers = parseInt(oldBackers) + 1;
   localStorage.setItem("totalBackers", newBackers);
   myBackers.innerHTML = localStorage.getItem("totalBackers");
-  const newPercentage =  (finalAmount / 100000) * 100;
+  const newPercentage = (finalAmount / 100000) * 100;
   localStorage.setItem("percentage", newPercentage);
   myPercentage.value = localStorage.getItem("percentage");
 
@@ -212,7 +211,7 @@ function updateCountdown() {
   const difference = targetDate - today;
   const daysLeft = Math.ceil(difference / (1000 * 60 * 60 * 24));
   document.getElementById("daysLeft").textContent = daysLeft;
-  if(daysLeft < 0){
+  if (daysLeft < 0) {
     clearInterval(updateCountdown);
     document.getElementById("noDay").innerHTML = `<h1 id="daysLeft">N/A</h4>`;
   }
@@ -221,19 +220,18 @@ updateCountdown();
 
 setInterval(updateCountdown, 1000 * 60 * 60 * 24);
 
-
 const deleteMenu = document.getElementById("close_Menu");
 const menuToggle = document.getElementById("menuToggle");
 const sideMenu = document.getElementById("sidemenu");
 //menu
-menuToggle.addEventListener('click', () => {
-  menuToggle.style.display = 'none';
-  deleteMenu.style.display = 'block';
-  sideMenu.style.display = 'block';
+menuToggle.addEventListener("click", () => {
+  menuToggle.style.display = "none";
+  deleteMenu.style.display = "block";
+  sideMenu.style.display = "block";
 });
 
-deleteMenu.addEventListener('click', () => {
-  deleteMenu.style.display = 'none';
-  menuToggle.style.display = 'block';
-  sideMenu.style.display = 'none';
+deleteMenu.addEventListener("click", () => {
+  deleteMenu.style.display = "none";
+  menuToggle.style.display = "block";
+  sideMenu.style.display = "none";
 });
