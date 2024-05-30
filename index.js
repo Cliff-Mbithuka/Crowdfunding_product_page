@@ -220,17 +220,23 @@ updateCountdown();
 
 setInterval(updateCountdown, 1000 * 60 * 60 * 24);
 
-const deleteMenu = document.getElementById("close_Menu");
+
+// Open and close the Menu
+const menuModal = document.getElementById("menu-modal");
+const deleteMenu = document.getElementById("close_Menu_modal");
 const menuToggle = document.getElementById("menuToggle");
-const sideMenu = document.getElementById("sidemenu");
+const sideMenu = document.getElementById("side-menu-modal");
 //menu
 menuToggle.addEventListener("click", () => {
+  menuModal.style.display = "block";
   menuToggle.style.display = "none";
   deleteMenu.style.display = "block";
   sideMenu.style.display = "block";
+  document.body.classList.add("fixed");
 });
 
 deleteMenu.addEventListener("click", () => {
+  menuModal.style.display = "none";
   deleteMenu.style.display = "none";
   menuToggle.style.display = "block";
   sideMenu.style.display = "none";

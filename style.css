@@ -278,15 +278,22 @@ button img:hover {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
+
 .modal-wrapper,
-.thank-you-content,.modal-menu-wrapper {
+.thank-you-content {
  background-color: #fefefe;
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
   border-radius: 5px; 
 }
-
+.modal-menu-wrapper{
+  background-color: #fefefe;
+  padding: 10px 0 0 0;
+  border: 1px solid #888;
+  width: 50%;
+  border-radius: 5px;
+}
 
 .modal-wrapper, .modal-menu-wrapper {
   margin: 2% auto;
@@ -474,7 +481,7 @@ button img:hover {
   }
   .menu ul li {
     display: block;
-    padding: 1em;
+    padding: 7em;
   }
   .menu ul li a {
     color: var(--Black);
@@ -496,28 +503,30 @@ button img:hover {
 /* modol menu  */
 .modal-menu-wrapper{
   width: 90%;
-  margin-top: 2em;
+  margin-top: 3.5em;
 }
 .modalMenu ul li {
   list-style: none;
   display: block;
-  padding: 10px;
+  padding: 1em;
   cursor: pointer;
 }
 .modalMenu ul li a {
   text-decoration: none;
   color: var(--Black);
     font-weight: bold;
-    padding-left: 7px;
+   
 }
 .modalMenu hr {
   display: block;
  color: var(--Dark-gray);
+ opacity: 0.2;
 }
 
-.closeModalMenu{
-  right: 0;
-}
+.menu-modal img{
+  float: right;
+  margin: 1em 1em 0 0;
+ }
   /*----wrapper-----*/
   .wrapper {
     margin-top: 7em;
