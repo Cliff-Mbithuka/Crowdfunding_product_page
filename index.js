@@ -220,7 +220,6 @@ updateCountdown();
 
 setInterval(updateCountdown, 1000 * 60 * 60 * 24);
 
-
 // Open and close the Menu
 const menuModal = document.getElementById("menu-modal");
 const deleteMenu = document.getElementById("close_Menu_modal");
@@ -240,4 +239,18 @@ deleteMenu.addEventListener("click", () => {
   deleteMenu.style.display = "none";
   menuToggle.style.display = "block";
   sideMenu.style.display = "none";
+});
+
+//Bookmarked
+const Bookmarked = document.querySelector(".bookmarked");
+const bookmarkText = document.getElementById("bookmarkText");
+const bottomButton = document.querySelector(".bottom");
+
+bookmarkedButton.addEventListener("click", () => {
+  if (bookmarkText.textContent === "Bookmark") {
+    bookmarkText.textContent = "Bookmarked";
+  } else {
+    bookmarkText.textContent = "Bookmark";
+  }
+  bottomButton.classList.toggle("show-color");
 });
