@@ -148,6 +148,7 @@ body.fixed {
 }
 .bottom:hover {
  cursor: pointer;
+ scale: 1.05;
 }
 .bottom span {
   margin-right: 10px;
