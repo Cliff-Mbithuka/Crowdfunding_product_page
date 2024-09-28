@@ -104,7 +104,7 @@ myPercentage.value = localStorage.getItem("percentage");
 let myBambooPledge = document.getElementById("bamboo100");
 myBambooPledge.innerHTML = localStorage.getItem("bambooPledge");
 
-// *************event listener
+// *************Event Listener**************//
 // submit button
 submitButtons.forEach(function (button) {
   button.addEventListener("click", ClickSubmitButton);
@@ -207,7 +207,7 @@ radiobtns.forEach(function (radio) {
 // Days counter
 function updateCountdown() {
   const today = new Date();
-  const targetDate = new Date(today.getFullYear(), 9, 17);
+  const targetDate = new Date(today.getFullYear(), 11, 17);
   const difference = targetDate - today;
   const daysLeft = Math.ceil(difference / (1000 * 60 * 60 * 24));
   document.getElementById("daysLeft").textContent = daysLeft;
@@ -225,6 +225,7 @@ const menuModal = document.getElementById("menu-modal");
 const deleteMenu = document.getElementById("close_Menu_modal");
 const menuToggle = document.getElementById("menuToggle");
 const sideMenu = document.getElementById("side-menu-modal");
+
 //menu
 menuToggle.addEventListener("click", () => {
   menuModal.style.display = "block";
